@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import React from 'react'
 import HeroImage from './../assets/HeroImage.png'
 
@@ -16,7 +17,7 @@ const HeroSection = () => {
                     </div>
                     <p className='text-gray-400 text-sm md:text-base w-[70%] border-l-4 border-[#EA4D24] px-4'>Here is what you always need. View our food collection and order yummy and healthy food within minutes.</p>
                 </div>
-                <div className='space-x-6 px-4'> <button className='bg-[#EA4D24] border-2 border-[#EA4D24] text-white w-[8rem] md:w-[12rem] rounded-md text-base md:text-xl py-1 md:py-2'>View Menu</button><button className='border-[#EA4D24] text-[#EA4D24] border-2 w-[8rem] md:w-[12rem] rounded-md text-base md:text-xl py-1 md:py-2'>Book a Table</button> </div>
+                <div className='space-x-6 px-4'> <motion.button whileTap={{scale:0.8}} className='bg-[#EA4D24] hover:ring-4 ring-orange-500/30 border-2 border-[#EA4D24] text-white w-[8rem] md:w-[12rem] rounded-md text-base md:text-xl py-1 md:py-2'>View Menu</motion.button><motion.button whileTap={{scale:0.8}} className='border-[#EA4D24] hover:ring-4 ring-orange-500/30 text-[#EA4D24] border-2 w-[8rem] md:w-[12rem] rounded-md text-base md:text-xl py-1 md:py-2'>Book a Table</motion.button> </div>
             </div>
             <div style={divStyle} className='grid place-items-center'>
                 <img className='max-w-[80%] max-h-[70%]' src={HeroImage} alt="" />

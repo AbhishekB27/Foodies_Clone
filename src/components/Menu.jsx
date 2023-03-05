@@ -1,7 +1,17 @@
-import React from "react";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import React, { useEffect } from "react";
 import MenuImage7 from "./../assets/MenuImage7.jpg";
 
 const Menu = () => {
+  const controls = useAnimation();
+  const { ref, inView } = useInView();
+
+  useEffect(() => {
+    if (inView) {
+      controls.start({ opacity: 1, y: 0, transition: { duration: 0.5 } });
+    }
+  }, [controls, inView]);
     const menuStyle = {
         background: `url("${MenuImage7}")`,
         backgroundSize: 'cover',
@@ -10,7 +20,11 @@ const Menu = () => {
     }
   return (
     <div className="min-h-[605px] grid place-items-center">
-      <div className="container grid place-items-center gap-5">
+      <motion.div
+       ref={ref}
+       initial={{ opacity: 0, y: 50 }}
+       animate={controls}
+      className="container grid place-items-center gap-5">
         <div className="h-[450px] w-full grid place-items-center" style={menuStyle}>
           {" "}
           <div className="px-6 rounded-md py-2 bg-[#EA4D24] text-white">
@@ -105,7 +119,7 @@ const Menu = () => {
           </div>
 
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

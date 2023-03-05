@@ -1,13 +1,27 @@
-import React from "react";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import React, { useEffect } from "react";
 import ServiceImage1 from "./../assets/ServiceImage1.jpg";
 import ServiceImage2 from "./../assets/ServiceImage2.jpg";
 import ServiceImage3 from "./../assets/ServiceImage3.jpg";
 import ManAvtar from "./../assets/man.png";
 
 const HeroSection4 = () => {
+  const controls = useAnimation();
+  const { ref, inView } = useInView();
+
+  useEffect(() => {
+    if (inView) {
+      controls.start({ opacity: 1, y: 0, transition: { duration: 0.5 } });
+    }
+  }, [controls, inView]);
   return (
     <div className="min-h-[605px] grid place-items-center">
-      <div className="container grid place-items-center gap-5">
+      <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={controls}
+      className="container grid place-items-center gap-5">
         <div className="px-4 border-l-4 border-l-[#EA4D24]">
           {" "}
           <span className="font-semibold">Services</span> We Provide{" "}
@@ -89,7 +103,7 @@ const HeroSection4 = () => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

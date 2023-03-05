@@ -1,14 +1,27 @@
-import { motion } from 'framer-motion';
-import React from 'react'
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import React, { useEffect } from "react";
 import HeroImage from './../assets/HeroImage.png'
 
 const HeroSection = () => {
+    const controls = useAnimation();
+  const { ref, inView } = useInView();
+
+  useEffect(() => {
+    if (inView) {
+      controls.start({ opacity: 1, y: 0, transition: { duration: 0.5 } });
+    }
+  }, [controls, inView]);
     const divStyle = {
         background: 'linear-gradient(110deg, #FFBC02 50%, #382D35 50%)'
         };
   return (
     <div className='min-h-[605px] grid place-items-center'>
-        <div className='container grid lg:grid-cols-2 place-content-center lg:gap-0 gap-3'>
+        <motion.div
+         ref={ref}
+         initial={{ opacity: 0, y: 50 }}
+         animate={controls}
+        className='container grid lg:grid-cols-2 place-content-center lg:gap-0 gap-3'>
             <div className='flex flex-col justify-center order-2 lg:order-none items-start gap-6'>
                 <div className='grid gap-3 '>
                     <div className='flex flex-col px-4 border-l-4 border-[#EA4D24]'>
@@ -22,7 +35,7 @@ const HeroSection = () => {
             <div style={divStyle} className='grid place-items-center'>
                 <img className='max-w-[80%] max-h-[70%]' src={HeroImage} alt="" />
             </div>
-        </div>
+        </motion.div>
     </div>
   )
 }

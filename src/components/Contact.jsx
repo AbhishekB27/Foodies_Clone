@@ -26,7 +26,7 @@ const Contact = () => {
         <div className="hidden md:grid place-items-center">
           <img src={ContactI} alt="" />
         </div>
-        <div className="grid place-items-start px-3 py-2">
+        <div className="grid place-items-center px-3 py-2">
           <div className="grid w-full gap-3 text-[#EA4D24]">
             <input
               placeholder="First Name"

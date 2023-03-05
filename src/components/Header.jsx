@@ -12,7 +12,7 @@ const Header = () => {
             <ol className='flex lg:flex-row flex-col w-full lg:w-auto items-start h-full lg:h-auto justify-evenly pl-4 lg:pl-0  lg:justify-end lg:items-center lg:space-x-8'>
             {
                 ['Home', 'Menu', 'About', 'Contact','Reservation'].map(item => {
-                    return <Link to={`${item}`}> <li className='cursor-pointer lg:bg-gradient-to-r lg:from-[#EA4D24] lg:to-[#EA4D24] lg:bg-right-bottom lg:bg-no-repeat lg:bg-[length:0%_3px] lg:hover:bg-[length:70%_3px] lg:transition-all'>{item}</li> </Link>
+                    return <Link to={`${item === 'Home' ? '/' : item}`}> <li className='cursor-pointer lg:bg-gradient-to-r lg:from-[#EA4D24] lg:to-[#EA4D24] lg:bg-right-bottom lg:bg-no-repeat lg:bg-[length:0%_3px] lg:hover:bg-[length:70%_3px] lg:transition-all'>{item}</li> </Link>
                 })
             }
             </ol>

@@ -17,7 +17,7 @@ const Foodies = () => {
     <div className='px-3 py-1 space-y-3'>
         <Header/>
         <Routes>
-          <Route index path='/Home' element={<Hero/>}/>
+          <Route index path='/' element={<Hero/>}/>
           <Route path='/Menu' element={<Menu/>}/>
           <Route path='/About' element={<AboutUs/>}/>
           <Route path='/Reservation' element={<Reservation/>}/>
